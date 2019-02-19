@@ -1,0 +1,13 @@
+{
+    "name": "orr/h-i-s",
+    "description": "Description of project HIS.",
+    "authors": [
+        {
+            "name": "Suchart Bunhachirat",
+            "email": "suchartbu@gmail.com"
+        }
+    ],
+    "require": {
+        "jsonrpc/jsonrpc": "v1.0.3"
+    }
+}
