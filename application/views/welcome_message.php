@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Welcome to Theptarin HIS JsonRPC</title>
 
 	<style type="text/css">
 
@@ -68,16 +68,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to OrrCodeIgniter 3!</h1>
+	<h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+		<p>เว็บเซอร์วิสที่โรงพยาบาลมีบริการ</p>
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+		<p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/hn/302936">HN. 302936</a></p>
+		<code>http://10.1.99.19/HIS/index.php/HisPatient/hn/302936</code>
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
+		<p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/name/%E0%B9%82/%E0%B8%88">ชื่อ โ นามสกุล จ </a></p>
+		<code>http://10.1.99.19/HIS/index.php/HisPatient/name/%E0%B9%82/%E0%B8%88</code>
+                
+                <p>ตัวอย่างโดย CodeIgniter</p>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
