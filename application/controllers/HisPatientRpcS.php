@@ -44,6 +44,15 @@ class ServerMethods {
         $HIMs_REG = new HIMs_REG();
         return $HIMs_REG->fatchDataPatient(['fname' => $fname , 'lname' => $lname]);
     }
+    
+    public function getForTest($id){
+        if($id='999'){
+            [['fname'=>'ทดสอบ','lname'=>'ระบบ','hn'=>'999']]
+        }else{
+            [['fname'=>'ทดสอบ','lname'=>'ระบบ','hn'=>'999']]
+        }
+        return ;
+    }
 
 }
 

@@ -30,6 +30,10 @@ class HisPatient extends CI_Controller {
     public function name($fname, $lname) {
         $this->json_rpc_client->call('getByName', [$fname, $lname]) ? $this->setMyView() : exit();
     }
+    
+    public function test($hn='999') {
+        $this->json_rpc_client->call('getForTest', [$hn]) ? $this->setMyView() : exit();
+    }
 
     private function setMyView() {
         $data_list = json_decode(json_encode($this->json_rpc_client->result), TRUE);
