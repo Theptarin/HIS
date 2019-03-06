@@ -72,15 +72,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div id="body">
                 <p>เว็บเซอร์วิสที่โรงพยาบาลมีบริการ</p>
+                
+                <p>ตัวอย่างการเรียกใช้ข้อมูลที่เซิร์ฟเวอร์นี้ HN.199 เพื่อทดสอบ: <a href="HisTesting.php">คลิกที่นี่</a></p>
+                <code>HisTesting.php</code>
 
-                <p>ตัวอย่างการเรียกใช้ข้อมูลที่ 10.1.107.4 มาที่เซิร์ฟเวอร์นี้: <a href="http://10.1.107.4/ThepJasonRPC/HisPatient.php">คลิกที่นี่</a></p>
-                <code>http://10.1.107.4/ThepJasonRPC/HisPatient.php</code>
-
-                <p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/hn/302936">HN. 302936</a></p>
-                <code>http://10.1.99.19/HIS/index.php/HisPatient/hn/302936</code>
+                <p>ตัวอย่างการเรียกใช้และแสดงข้อมูลทดสอบ HN.299 : <a href="index.php/HisPatient/">คลิกที่นี่</a></p>
+                <code>index.php/HisPatient/</code>
 
                 <p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/name/%E0%B9%82/%E0%B8%88">ชื่อ โ นามสกุล จ </a></p>
-                <code>http://10.1.99.19/HIS/index.php/HisPatient/name/%E0%B9%82/%E0%B8%88</code>
+                <code>index.php/HisPatient/name/%E0%B9%82/%E0%B8%88</code>
+                
+                <p>ตัวอย่างการเรียกใช้ข้อมูลที่ 10.1.107.4 มาที่เซิร์ฟเวอร์นี้: <a href="http://10.1.107.4/ThepJasonRPC/HisPatient.php">คลิกที่นี่</a></p>
+                <code>http://10.1.107.4/ThepJasonRPC/HisPatient.php</code>
 
                 <p>ตัวอย่างโดย CodeIgniter</p>
 

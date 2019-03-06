@@ -30,7 +30,7 @@ class ServerMethods {
             return $int ? (int) $quotient : $quotient;
         }
     }
-
+    
     public function getByHn($hn) {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_REG');
@@ -45,13 +45,12 @@ class ServerMethods {
         return $HIMs_REG->fatchDataPatient(['fname' => $fname , 'lname' => $lname]);
     }
     
-    public function getForTest($id){
-        if($id='999'){
-            [['fname'=>'ทดสอบ','lname'=>'ระบบ','hn'=>'999']]
-        }else{
-            [['fname'=>'ทดสอบ','lname'=>'ระบบ','hn'=>'999']]
-        }
-        return ;
+    public function getByHnTest($hn=0){
+        $data[0] = [];
+        $data[199] = ['fname'=>'ชื่อเพื่อทดสอบ','lname'=>'นามสกุลเพื่อทดสอบ','hn'=>'199'];
+        $data[299] = ['fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299'];
+        //return [['fname'=>'ชื่อเพื่อทดสอบ','lname'=>'นามสกุลเพื่อทดสอบ','hn'=>'199'],['fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299']];
+        return ($hn == 0)?[]:[$data[$hn]];
     }
 
 }
