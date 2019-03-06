@@ -18,7 +18,9 @@ class HisPatient extends CI_Controller {
         $url = 'http://10.1.99.19/HIS/index.php/HisPatientRpcS';
         $this->load->library('vendor/json_rpc_client', ['url' => $url, 'transport' => NULL]);
     }
-
+    /**
+     * แสดงข้อมูลทดสอบ HN.299 เพื่อทดสอบการทำงานของโปรแกรม
+     */
     public function index() {
         $this->json_rpc_client->call('getByHnTest', ['299']) ? $this->setMyView() : exit();
     }

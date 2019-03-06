@@ -44,7 +44,11 @@ class ServerMethods {
         $HIMs_REG = new HIMs_REG();
         return $HIMs_REG->fatchDataPatient(['fname' => $fname , 'lname' => $lname]);
     }
-    
+    /**
+     * สำหรับทดสอบการเรียกใช้ข้อมูล HN. ทดสอบ
+     * @param type $hn
+     * @return array
+     */
     public function getByHnTest($hn=0){
         $data[0] = [];
         $data[199] = ['fname'=>'ชื่อเพื่อทดสอบ','lname'=>'นามสกุลเพื่อทดสอบ','hn'=>'199'];
