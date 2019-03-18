@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1eddf432a7b9058bad083a16444dc81d",
+    "content-hash": "428f4d34c5ee93f7ebf22d034601cca6",
     "packages": [
         {
             "name": "jsonrpc/jsonrpc",
@@ -48,12 +48,55 @@
                 "rpc"
             ],
             "time": "2012-11-30T21:43:30+00:00"
+        },
+        {
+            "name": "orr/jdo",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/suchartbu/jdo.git",
+                "reference": "6ce2ba3dbb7c9056c694bc9d77728b4f69d62ab1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/suchartbu/jdo/zipball/6ce2ba3dbb7c9056c694bc9d77728b4f69d62ab1",
+                "reference": "6ce2ba3dbb7c9056c694bc9d77728b4f69d62ab1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Orr\\Jdo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Suchart Bunhachirat",
+                    "email": "suchartbu@gmail.com"
+                }
+            ],
+            "description": "fetch data from database jdbc",
+            "keywords": [
+                "as400",
+                "db2",
+                "jdbc"
+            ],
+            "time": "2019-03-09T07:43:07+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "orr/jdo": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

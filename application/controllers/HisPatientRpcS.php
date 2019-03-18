@@ -51,8 +51,8 @@ class ServerMethods {
      */
     public function getByHnTest($hn=0){
         $data[0] = [];
-        $data[199] = ['fname'=>'ชื่อเพื่อทดสอบ','lname'=>'นามสกุลเพื่อทดสอบ','hn'=>'199'];
-        $data[299] = ['fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299'];
+        $data[199] = ['prename' => 'คุณ','fname'=>'เทพ','lname'=>'ธารินทร์','hn'=>'199','vn' => '44444444','cid' => '1409900181748','sex' => '1','birthday' => '1985-12-31'];
+        $data[299] = ['prename' => '001','fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299','vn' => '88889999','cid' => '44998834938','sex' => '2','birthday' => '2000-10-30'];
         //return [['fname'=>'ชื่อเพื่อทดสอบ','lname'=>'นามสกุลเพื่อทดสอบ','hn'=>'199'],['fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299']];
         return ($hn == 0)?[]:[$data[$hn]];
     }

@@ -24,15 +24,25 @@ class HisPatient extends CI_Controller {
     public function index() {
         $this->json_rpc_client->call('getByHnTest', ['299']) ? $this->setMyView() : exit();
     }
-
+    /**
+     * ข้อมูลผู้รับบริการตาม HN.
+     * @param type $hn
+     */
     public function hn($hn) {
         $this->json_rpc_client->call('getByHn', [$hn]) ? $this->setMyView() : exit();
     }
-
+    /**
+     * ข้อมูลผู้รับบริการตาม ชื่อ และ นามสกุล
+     * @param type $fname
+     * @param type $lname
+     */
     public function name($fname, $lname) {
         $this->json_rpc_client->call('getByName', [$fname, $lname]) ? $this->setMyView() : exit();
     }
-
+    
+    /**
+     * สร้างหน้าจอแสดงผล
+     */
     private function setMyView() {
         $data_list = json_decode(json_encode($this->json_rpc_client->result), TRUE);
         // Load the SmartGrid Library

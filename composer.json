@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "jsonrpc/jsonrpc": "v1.0.3"
+        "jsonrpc/jsonrpc": "v1.0.3",
+        "orr/jdo": "dev-master"
     }
 }
