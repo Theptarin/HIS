@@ -10,8 +10,8 @@ ini_set('default_charset', 'UTF-8');
 ini_set('display_errors', '1');
 require_once 'vendor/autoload.php';
 # set the url of the server
-$url = 'http://10.1.99.19/HIS/index.php/HisPatientRpcS';
-//$url = 'http://61.19.22.99/medicong-dev/API/HIS/index.php/HisPatientRpcS';
+$url = 'http://10.1.99.19/HIS/index.php/PatientRpcS';
+//$url = 'http://61.19.22.99/medicong-dev/API/HIS/index.php/PatientRpcS';
 # create our client object, passing it the server url
 $Client = new JsonRpc\Client($url);
 # set up our rpc call with a method and params

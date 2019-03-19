@@ -35,14 +35,14 @@ class ServerMethods {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_REG');
         $HIMs_REG = new HIMs_REG();
-        return $HIMs_REG->fatchDataPatient(['hn' => $hn]);
+        return $HIMs_REG->fatchPatient(['hn' => $hn]);
     }
     
     public function getByName($fname,$lname) {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_REG');
         $HIMs_REG = new HIMs_REG();
-        return $HIMs_REG->fatchDataPatient(['fname' => $fname , 'lname' => $lname]);
+        return $HIMs_REG->fatchPatient(['fname' => $fname , 'lname' => $lname]);
     }
     /**
      * สำหรับทดสอบการเรียกใช้ข้อมูล HN. ทดสอบ
@@ -60,11 +60,11 @@ class ServerMethods {
 }
 
 /**
- * Description of HisPatientRpcS
+ * Description of PatientRpcS
  * HIS Patient RPC Server
  * @author suchart bunhachirat
  */
-class HisPatientRpcS extends CI_Controller {
+class PatientRpcS extends CI_Controller {
 
     public function __construct() {
         parent::__construct();

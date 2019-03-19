@@ -24,7 +24,7 @@ class HIS_patient extends CI_Controller {
         // Load the SmartGrid Library
         $this->load->library('SmartGrid/Smartgrid');
         // Data as array
-        $data_list = $this->HIMs_REG->fatchDataPatient($keys);
+        $data_list = $this->HIMs_REG->fatchPatient($keys);
         // Column settings
         $columns = ['hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'fname' => ['header' => "ชื่อ", 'type' => "label", 'align' => "left"]
             , 'lname' => ['header' => "นามสกุล", 'type' => "label", 'align' => "left"]];

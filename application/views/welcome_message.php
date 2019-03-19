@@ -71,12 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
 
             <div id="body">
-                <h3>เว็บเซอร์วิสที่โรงพยาบาลมีบริการ</h3>
-                
+                               
                 <p>ทดสอบเรียกทะเบียนผู้รับบริการ: <a href="test_patient.php">HN. 365656 </a></p>
                 <code>test_patient.php</code>
                 
-                <p>ทดสอบเรียกข้อมูลการรับบริการผู้ป่วยนอก: <a href="test_opd_visit.php">HN. 365656 </a></p>
+                <p>ทดสอบเรียกข้อมูลการรับบริการผู้ป่วยนอก: <a href="test_opd_visit.php">HN. 460028 DIV DP1 </a></p>
                 <code>test_opd_visit.php</code>
                 
                 <p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/hn/365656">HN. 365656 </a></p>

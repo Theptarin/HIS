@@ -21,7 +21,7 @@ class ServerMethods {
     public $error = null;
 
     /**
-     * ข้อมูลการรับบริการวันนี้ตาม HN.
+     * ข้อมูลการรับบริการทั้งหมดตาม HN.
      * @param type $hn
      * @return array
      */
@@ -29,7 +29,31 @@ class ServerMethods {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_OPD');
         $HIMs_OPD = new HIMs_OPD();
-        return $HIMs_OPD->fatchDataVisit(['hn' => $hn]);
+        return $HIMs_OPD->fatchVisit(['hn' => $hn]);
+    }
+
+    /**
+     * ข้อมูลการรับบริการตามผู้รับบริการ และหน่วยงาน วันนี้
+     * @param string $hn
+     * @param string $div_id
+     * @return array
+     */
+    public function getByHnDiv($hn, $div_id) {
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_OPD');
+        $HIMs_OPD = new HIMs_OPD();
+        return $HIMs_OPD->fatchVisit(['hn' => $hn, 'div_id' => $div_id]);
+    }
+
+    /**
+     * ข้อมูลรับบริการวันนี้
+     * @return array
+     */
+    public function getToday() {
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_OPD');
+        $HIMs_OPD = new HIMs_OPD();
+        return $HIMs_OPD->fatchVisit([]);
     }
 
 }
