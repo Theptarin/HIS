@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Welcome to Theptarin HIS JsonRPC</title>
+        <title>Welcome to Theptarin HIS JsonRPC (MDC-04)</title>
 
         <style type="text/css">
 

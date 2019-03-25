@@ -10,7 +10,8 @@ ini_set('default_charset', 'UTF-8');
 ini_set('display_errors', '1');
 require_once 'vendor/autoload.php';
 # set the url of the server
-$url = 'http://10.1.99.19/HIS/index.php/OpdVisitRpcS';
+$url = 'http://10.1.88.4/HIS/index.php/OpdVisitRpcS';
+//$url = 'http://e4d4bb07.ngrok.io/HIS/index.php/OpdVisitRpcS';
 # create our client object, passing it the server url
 $Client = new JsonRpc\Client($url);
 # set up our rpc call with a method and params
