@@ -18,12 +18,14 @@ class HisPatient extends CI_Controller {
         $url = 'http://10.1.88.4/HIS/index.php/PatientRpcS';
         $this->load->library('vendor/json_rpc_client', ['url' => $url, 'transport' => NULL]);
     }
+
     /**
      * แสดงข้อมูลทดสอบ HN.299 เพื่อทดสอบการทำงานของโปรแกรม
      */
     public function index() {
         $this->json_rpc_client->call('getByHnTest', ['299']) ? $this->setMyView() : exit();
     }
+
     /**
      * ข้อมูลผู้รับบริการตาม HN.
      * @param type $hn
@@ -31,6 +33,7 @@ class HisPatient extends CI_Controller {
     public function hn($hn) {
         $this->json_rpc_client->call('getByHn', [$hn]) ? $this->setMyView() : exit();
     }
+
     /**
      * ข้อมูลผู้รับบริการตาม ชื่อ และ นามสกุล
      * @param type $fname
@@ -39,7 +42,7 @@ class HisPatient extends CI_Controller {
     public function name($fname, $lname) {
         $this->json_rpc_client->call('getByName', [$fname, $lname]) ? $this->setMyView() : exit();
     }
-    
+
     /**
      * สร้างหน้าจอแสดงผล
      */
@@ -48,7 +51,7 @@ class HisPatient extends CI_Controller {
         // Load the SmartGrid Library
         $this->load->library('SmartGrid/Smartgrid');
         // Column settings
-        $columns = ['hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'fname' => ['header' => "ชื่อ", 'type' => "label", 'align' => "left"]
+        $columns = ['hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'prefix' => ['header' => "คำนำหน้า", 'type' => "label", 'align' => "left"], 'fname' => ['header' => "ชื่อ", 'type' => "label", 'align' => "left"]
             , 'lname' => ['header' => "นามสกุล", 'type' => "label", 'align' => "left"]];
         // Config settings, optional
         $config = array("page_size" => 10);
