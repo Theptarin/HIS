@@ -78,6 +78,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p>ทดสอบเรียกข้อมูลการรับบริการผู้ป่วยนอก: <a href="test_opd_visit.php">HN. 460028 DIV DP1 </a></p>
                 <code>test_opd_visit.php</code>
                 
+                <p>ทดสอบเรียกทะเบียนผู้บันทึกข้อมูล: <a href="test_requester.php">Requester</a></p>
+                <code>test_requester.php</code>
+                
                 <p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/hn/365656">HN. 365656 </a></p>
                 <code>index.php/HisPatient/hn/365656</code>
                 
