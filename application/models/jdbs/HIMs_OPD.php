@@ -36,7 +36,7 @@ class HIMs_OPD extends CI_Model {
         } else if (!is_null($keys['hn'])) {
             $sql .= 'AND "OPDAPPV5PF"."OAPHN" = \'' . $keys['hn'] . '\'';
         } else {
-            $sql .= 'AND "OPDAPPV5PF"."OAPREGDTE" = ' . $cur_thdate;
+            $sql .= 'AND "OPDAPPV5PF"."OAPREGDTE" = ' . $cur_thdate . ' ORDER BY "OAPREGDTE" , "OAPHN"';
         }
         $this->JDO = new \orr\JDO('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         //echo $sql;
