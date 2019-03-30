@@ -28,8 +28,9 @@ class OpdVisit extends CI_Controller{
         // Load the SmartGrid Library
         $this->load->library('SmartGrid/Smartgrid');
         // Column settings
-        $columns = ['visit_date' => ['header' => "วันที่มา", 'type' => "label", 'align' => "left"], 'hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'vn' => ['header' => "VN.", 'type' => "label", 'align' => "left"]
-            , 'div_id' => ['header' => "รหัสคลินิก", 'type' => "label", 'align' => "left"],'doctor_id' => ['header' => "รหัสแพทย์", 'type' => "label", 'align' => "left"]];
+        $columns = ['visit_date' => ['header' => "วันที่มา", 'type' => "label", 'align' => "left"],'visit_time' => ['header' => "เวลาที่มา", 'type' => "label", 'align' => "left"],
+            'hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'vn' => ['header' => "VN.", 'type' => "label", 'align' => "left"], 
+            'div_id' => ['header' => "รหัสคลินิก", 'type' => "label", 'align' => "left"],'doctor_id' => ['header' => "รหัสแพทย์", 'type' => "label", 'align' => "left"]];
         // Config settings, optional
         $config = array("page_size" => 10);
         // Set the grid

@@ -19,12 +19,12 @@ $success = false;
 /**
  * ค้นหาข้อมูลด้วย HN. 365656 เพื่อทดสอบการเชื่อมระบบ
  */
-$success = $Client->call('getByHn', ['365656']);
+//$success = $Client->call('getByHn', ['365656']);
 
 /**
  * ค้นหาข้อมูลด้วย HN. 460028 และ div_id DP1 เพื่อทดสอบการเชื่อมระบบ
  */
-//$success = $Client->call('getByHnDiv', ['460028','DP1']);
+$success = $Client->call('getByHnDiv', ['460028','DP1']);
 
 /**
  * ค้นหาข้อมูลด้วย HN. 365656 เพื่อทดสอบการเชื่อมระบบ

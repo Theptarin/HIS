@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p>ทดสอบเรียกทะเบียนผู้บันทึกข้อมูล: <a href="test_requester.php">Requester</a></p>
                 <code>test_requester.php</code>
                 
-                <p>ทะเบียนผู้รับบริการประจำวันนี้: <a href="index.php/OpdVisit">วันนี้</a></p>
+                <p>ทะเบียนผู้รับบริการประจำ: <a href="index.php/OpdVisit">วันนี้</a></p>
                 <code>index.php/OpdVisit</code>
                 
                 <p>ตัวอย่างการใช้เรียกข้อมูลผู้รับบริการของโรงพยาบาล: <a href="index.php/HisPatient/hn/365656">HN. 365656 </a></p>
