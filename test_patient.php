@@ -18,7 +18,7 @@ $Client = new JsonRpc\Client($url);
 # set up our rpc call with a method and params
 $success = false;
 /**
- * ค้นหาข้อมูลด้วย HN. 199 เพื่อทดสอบการเชื่อมระบบ
+ * ค้นหาข้อมูลด้วย HN. 365656 เพื่อทดสอบการเชื่อมระบบ
  */
 $success = $Client->call('getByHn', ['365656']);
 /**

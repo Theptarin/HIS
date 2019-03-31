@@ -20,10 +20,10 @@ class HisPatient extends CI_Controller {
     }
 
     /**
-     * แสดงข้อมูลทดสอบ HN.299 เพื่อทดสอบการทำงานของโปรแกรม
+     * แสดงข้อมูลทดสอบ HN.365656 เพื่อทดสอบการทำงานของโปรแกรม
      */
     public function index() {
-        $this->json_rpc_client->call('getByHnTest', ['299']) ? $this->setMyView() : exit();
+        $this->json_rpc_client->call('getByHn', ['365656']) ? $this->setMyView() : exit();
     }
 
     /**
@@ -52,7 +52,8 @@ class HisPatient extends CI_Controller {
         $this->load->library('SmartGrid/Smartgrid');
         // Column settings
         $columns = ['hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'prefix' => ['header' => "คำนำหน้า", 'type' => "label", 'align' => "left"], 'fname' => ['header' => "ชื่อ", 'type' => "label", 'align' => "left"]
-            , 'lname' => ['header' => "นามสกุล", 'type' => "label", 'align' => "left"]];
+            , 'lname' => ['header' => "นามสกุล", 'type' => "label", 'align' => "left"], 'sex' => ['header' => "เพศ", 'type' => "label", 'align' => "left"] 
+            , 'sex' => ['header' => "เพศ", 'type' => "label", 'align' => "left"] , 'birthday_date' => ['header' => "วันเกิด", 'type' => "label", 'align' => "left"]];
         // Config settings, optional
         $config = array("page_size" => 10);
         // Set the grid
