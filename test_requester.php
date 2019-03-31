@@ -20,7 +20,7 @@ $success = false;
 /**
  * ค้นหาข้อมูลด้วย HN. 460028 และ div_id DP1 เพื่อทดสอบการเชื่อมระบบ
  */
-$success = $Client->call('getById', ['ท2525']);
+$success = $Client->call('getById', ['xxx']);
 
 ?>
 <html>
