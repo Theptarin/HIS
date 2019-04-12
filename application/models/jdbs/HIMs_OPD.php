@@ -34,7 +34,7 @@ class HIMs_OPD extends CI_Model {
         if (!is_null($keys['hn']) AND ! is_null($keys['div_id'])) {
             $sql .= 'AND "OPDAPPV5PF"."OAPHN" = \'' . $keys['hn'] . '\' AND "OPDAPPV5PF"."OAPREGDTE" = ' . $cur_thdate . ' AND "OPDAPPV5PF"."OAPDIVCOD" = \'' . $keys['div_id'] . '\'';
         } else if (!is_null($keys['hn'])) {
-            $sql .= 'AND "OPDAPPV5PF"."OAPHN" = \'' . $keys['hn'] . '\'';
+            $sql .= 'AND "OPDAPPV5PF"."OAPHN" = \'' . $keys['hn'] . '\' ORDER BY "OAPREGDTE" , "OAPFRMTIM" ,"OAPVN" * 100 + "OAPSEQNO"';
         } else {
             $sql .= 'AND "OPDAPPV5PF"."OAPREGDTE" = ' . $cur_thdate . ' ORDER BY "OAPREGDTE" , "OAPFRMTIM" ,"OAPVN" * 100 + "OAPSEQNO" ,"OAPHN"';
         }

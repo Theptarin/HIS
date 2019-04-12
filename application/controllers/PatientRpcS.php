@@ -21,40 +21,28 @@ class ServerMethods {
 
     public $error = null;
 
-    public function divide($dividend, $divisor, $int = false) {
-
-        if (!$divisor) {
-            $this->error = 'Cannot divide by zero';
-        } else {
-            $quotient = $dividend / $divisor;
-            return $int ? (int) $quotient : $quotient;
-        }
-    }
-    
+    /**
+     * ข้อมูลตาม HN.
+     * @param sting $hn
+     * @return array
+     */
     public function getByHn($hn) {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_REG');
         $HIMs_REG = new HIMs_REG();
         return $HIMs_REG->fatchPatient(['hn' => $hn]);
     }
-    
-    public function getByName($fname,$lname) {
+
+    /**
+     * ข้อมูลตาม ชื่อ และ นามสกุล
+     * @param sting $hn
+     * @return array
+     */
+    public function getByName($fname, $lname) {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_REG');
         $HIMs_REG = new HIMs_REG();
-        return $HIMs_REG->fatchPatient(['fname' => $fname , 'lname' => $lname]);
-    }
-    /**
-     * สำหรับทดสอบการเรียกใช้ข้อมูล HN. ทดสอบ
-     * @param type $hn
-     * @return array
-     */
-    public function getByHnTest($hn=0){
-        $data[0] = [];
-        $data[199] = ['prename' => 'คุณ','fname'=>'เทพ','lname'=>'ธารินทร์','hn'=>'199','vn' => '44444444','cid' => '1409900181748','sex' => '1','birthday' => '1985-12-31'];
-        $data[299] = ['prename' => '001','fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299','vn' => '88889999','cid' => '44998834938','sex' => '2','birthday' => '2000-10-30'];
-        //return [['fname'=>'ชื่อเพื่อทดสอบ','lname'=>'นามสกุลเพื่อทดสอบ','hn'=>'199'],['fname'=>'ข้อมูลfname','lname'=>'ข้อมูลlname','hn'=>'299']];
-        return ($hn == 0)?[]:[$data[$hn]];
+        return $HIMs_REG->fatchPatient(['fname' => $fname, 'lname' => $lname]);
     }
 
 }

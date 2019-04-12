@@ -22,6 +22,14 @@ class OpdVisit extends CI_Controller{
     public function index() {
         $this->json_rpc_client->call('getToday', []) ? $this->setMyView() : exit();
     }
+    
+    /**
+     * ทะเบียนการรับบริการผู้ป่วยนอกตาม HN.
+     * @param string $hn
+     */
+    public function hn($hn){
+        $this->json_rpc_client->call('getByHn', [$hn]) ? $this->setMyView() : exit();
+    }
 
     private function setMyView() {
         $data_list = json_decode(json_encode($this->json_rpc_client->result), TRUE);
@@ -30,7 +38,8 @@ class OpdVisit extends CI_Controller{
         // Column settings
         $columns = ['visit_date' => ['header' => "วันที่มา", 'type' => "label", 'align' => "left"],'visit_time' => ['header' => "เวลาที่มา", 'type' => "label", 'align' => "left"],
             'hn' => ['header' => "HN.", 'type' => "label", 'align' => "left"], 'vn' => ['header' => "VN.", 'type' => "label", 'align' => "left"], 
-            'div_id' => ['header' => "รหัสคลินิก", 'type' => "label", 'align' => "left"],'doctor_id' => ['header' => "รหัสแพทย์", 'type' => "label", 'align' => "left"]];
+            'div_id' => ['header' => "รหัสคลินิก", 'type' => "label", 'align' => "left"],'doctor_id' => ['header' => "รหัสแพทย์", 'type' => "label", 'align' => "left"] ,
+            'doctor_fname' => ['header' => "ชื่อแพทย์", 'type' => "label", 'align' => "left"] ,'doctor_lname' => ['header' => "นามสกุลแพทย์", 'type' => "label", 'align' => "left"]];
         // Config settings, optional
         $config = array("page_size" => 10);
         // Set the grid
