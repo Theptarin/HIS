@@ -1,20 +1,16 @@
 <?php
 
-namespace orr;
+namespace Orr;
 
-if (defined('BASEPATH')) {
-    /**
-     * require_once(APPPATH . 'models/Jdb_ttrpf.php');
-     */
-} else {
-    exit('No direct script access allowed');
+class JDOException extends \Exception {
+    
 }
-class JDOException extends \Exception{}
+
 /**
  * JAVA Database Objects
  * @author suchart bunhachirat
  */
-class JDO {
+class Jdo {
 
     private $ModelsPath = '/var/www/html/HIS/jar/models/';
     private $LibrariesPath = '/var/www/html/HIS/jar/libraries/';
@@ -43,14 +39,21 @@ class JDO {
      */
     public function query($sql) {
         $this->execQuery($sql);
-        return ($this->isQueryOk()) ? $this->Json['data'] : FALSE;
+        return ($this->isExecOk()) ? $this->Json['data'] : FALSE;
+    }
+    
+    /**
+     * JDO::update
+     * @param string $sql
+     * @return array 
+     */
+    public function update($sql) {
+        $this->execUpdate($sql);
+        return ($this->isExecOk()) ? $this->Json['data'] : FALSE;
     }
 
-    public function getRowsArray() {
-        
-    }
 
-    public function isQueryOk() {
+    public function isExecOk() {
         return ($this->Json['execute'] === 'successed') ? TRUE : FALSE;
     }
 
@@ -62,9 +65,10 @@ class JDO {
         $output = NULL;
         try {
             $file_path = 'java -cp ' . $this->LibrariesPath . '*:' . $this->ModelsPath . 'jdb.jar execQuery ' . '"' . $sql . '" ' . '"' . $this->dbUser . '" ' . '"' . $this->dbPasswd . '" ' . '"' . $this->dbUrl . '" ';
+            //die($file_path);
             exec($file_path, $output);
             $this->Json = json_decode($output[0], TRUE);
-            if($this->Json['execute'] === 'failed'){
+            if ($this->Json['execute'] === 'failed') {
                 throw new JDOException($this->Json['info']);
             }
         } catch (Exception $exc) {
@@ -73,5 +77,22 @@ class JDO {
             
         }
     }
+    
+    private function execUpdate($sql) {
+        $output = NULL;
+        try {
+            $file_path = 'java -cp ' . $this->LibrariesPath . '*:' . $this->ModelsPath . 'jdb.jar execUpdate ' . '"' . $sql . '" ' . '"' . $this->dbUser . '" ' . '"' . $this->dbPasswd . '" ' . '"' . $this->dbUrl . '" ';
+            exec($file_path, $output);
+            $this->Json = json_decode($output[0], TRUE);
+            if ($this->Json['execute'] === 'failed') {
+                throw new JDOException($this->Json['info']);
+            }
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        } finally {
+            
+        }
+    }
+
 
 }

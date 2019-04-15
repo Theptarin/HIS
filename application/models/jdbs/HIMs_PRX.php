@@ -1,6 +1,6 @@
 <?php
 if (defined('BASEPATH')) {
-    require_once(APPPATH . 'libraries/orr/JDO.php');
+    require_once(APPPATH . 'libraries/orr/Jdo.php');
 } else {
     exit('No direct script access allowed');
 }
@@ -27,7 +27,7 @@ class HIMs_PRX extends CI_Model {
         /**
          * การเชื่อมต่อฐานข้อมูล
          */
-        $this->JDO = new \orr\JDO('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
+        $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         return $this->JDO->query($sql);
     }
 

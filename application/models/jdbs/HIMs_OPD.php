@@ -1,7 +1,7 @@
 <?php
 
 if (defined('BASEPATH')) {
-    require_once(APPPATH . 'libraries/orr/JDO.php');
+    require_once(APPPATH . 'libraries/orr/Jdo.php');
 } else {
     exit('No direct script access allowed');
 }
@@ -38,7 +38,7 @@ class HIMs_OPD extends CI_Model {
         } else {
             $sql .= 'AND "OPDAPPV5PF"."OAPREGDTE" = ' . $cur_thdate . ' ORDER BY "OAPREGDTE" , "OAPFRMTIM" ,"OAPVN" * 100 + "OAPSEQNO" ,"OAPHN"';
         }
-        $this->JDO = new \orr\JDO('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
+        $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         //echo $sql;
         return $this->JDO->query($sql);
     }

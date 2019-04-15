@@ -1,7 +1,7 @@
 <?php
 
 if (defined('BASEPATH')) {
-    require_once(APPPATH . 'libraries/orr/JDO.php');
+    require_once(APPPATH . 'libraries/orr/Jdo.php');
 } else {
     exit('No direct script access allowed');
 }
@@ -18,7 +18,7 @@ class Ttrpf extends \CI_Model {
     }
 
     public function Select() {
-        $jdo = new \orr\JDO('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/ttrpf');
+        $jdo = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/ttrpf');
         $sql = "SELECT * FROM jdbc_test";
         return $jdo->query($sql);
     }

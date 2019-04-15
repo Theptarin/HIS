@@ -1,7 +1,7 @@
 <?php
 
 if (defined('BASEPATH')) {
-    require_once(APPPATH . 'libraries/orr/JDO.php');
+    require_once(APPPATH . 'libraries/orr/Jdo.php');
 } else {
     exit('No direct script access allowed');
 }
@@ -30,7 +30,7 @@ class HIMs_REG extends CI_Model {
         } else {
             $sql = "SELECT rmshnref AS hn, rmsname AS fname, rmssurnam AS lname FROM regmasv5pf WHERE rmshnref = 0";
         }
-        $this->JDO = new \orr\JDO('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
+        $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         //echo $sql;
         return $this->JDO->query($sql);
     }
