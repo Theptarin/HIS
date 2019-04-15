@@ -13,6 +13,8 @@ import java.sql.Statement;
  */
 public class execUpdate {
 
+    static final String EXEC_FAILED = "failed";
+    static final String EXEC_SUCCESSED = "successed";
     static String DB_SQL = "";
     static String DB_USER = "";
     static String DB_PASSWD = "";
@@ -35,9 +37,11 @@ public class execUpdate {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWD);
             statement = connection.createStatement();
             statement.executeUpdate(DB_SQL);
-            System.out.println("{\"status\":\"success\"},{\"data\":\"\"}");
+            //System.out.println("{\"status\":\"success\"},{\"data\":\"\"}");
+            System.out.println("{\"execute\":\"" + EXEC_SUCCESSED + "\",\"data\":\"\",\"info\":\"\"}");
         } catch (SQLException ex) {
-            System.out.println("{\"status\":\"fail\"},{\"data\":\"\"},{\"SQLException\":\"" + ex + " : execUpdate 40\"}");
+            //System.out.println("{\"status\":\"fail\"},{\"data\":\"\"},{\"SQLException\":\"" + ex + " : execUpdate 40\"}");
+            System.out.println("{\"execute\":\""+ EXEC_FAILED +"\",\"data\":\"\",\"info\":\"" + ex + " | execUpdate 40\"}");
             System.exit(0);
         } finally {
             try {
@@ -49,7 +53,8 @@ public class execUpdate {
                 }
                 System.exit(0);
             } catch (SQLException ex) {
-                System.out.println("{\"status\":\"fail\"},{\"data\":\"\"},{\"SQLException\":\"" + ex + " : execUpdate 52\"}");
+                //System.out.println("{\"status\":\"fail\"},{\"data\":\"\"},{\"SQLException\":\"" + ex + " : execUpdate 52\"}");
+                System.out.println("{\"execute\":\""+ EXEC_FAILED +"\",\"data\":\"\",\"info\":\"" + ex + " | execUpdate 52\"}");
                 System.exit(0);
             }
         }
