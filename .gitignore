@@ -2,3 +2,6 @@
 /java/model/build/
 /java/model/dist/
 /java/model/nbproject/private/
+/java/jdb/nbproject/private/
+/java/jdb/build/
+/java/jdb/dist/
