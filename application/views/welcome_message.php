@@ -79,7 +79,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div id="container">
             <h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
-
+            
+            <h2>ทะเบียนผู้ป่วยที่แพ้ยา (DrugAllergyRpcS)</h2>
+            <div id="body">
+                มี HN. ยา กลุ่ม ชื่อสามัญ อาการที่แพ์ วันที่บันทึก
+            </div>
+            
+            <div id="body">
+                <p>ข้อมูลแพ้ยาตาม : <a href="test_drug_allergy.php">HN. 197642 </a></p>
+                <code>test_drug_allergy.php</code>
+            </div>
+            
             <h2>ทะเบียนผู้รับบริการ (PatientRpcS)</h2>
             <div id="body">
                 เช่น ชื่อ นามสกุล เพศ วันเดือนปีเกิด ผู้รับบริการ เป็นต้น
