@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             
             <div id="body">
-                <p>ข้อมูลแพ้ยาตาม : <a href="test_drug_allergy.php">HN. 197642 </a></p>
+                <p>ข้อมูลแพ้ยาตาม : <a href="test_drug_allergy.php">HN. 168348 </a></p>
                 <code>test_drug_allergy.php</code>
             </div>
             

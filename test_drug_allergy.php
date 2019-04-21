@@ -18,9 +18,9 @@ $Client = new JsonRpc\Client($url);
 $success = false;
 
 /**
- * ค้นหาข้อมูลด้วย HN. 197642
+ * ค้นหาข้อมูลด้วย HN. 168348
  */
-$success = $Client->call('getByHn', ['197642']);
+$success = $Client->call('getByHn', ['168348']);
 
 ?>
 <html>
