@@ -20,7 +20,7 @@ $success = false;
 /**
  * ค้นหาข้อมูลด้วย HN. 168348
  */
-$success = $Client->call('getByHn', ['168348']);
+$success = $Client->call('getByHn', ['1542144']);
 
 ?>
 <html>
