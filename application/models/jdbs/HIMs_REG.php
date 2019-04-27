@@ -32,7 +32,13 @@ class HIMs_REG extends CI_Model {
         }
         $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         //echo $sql;
-        return $this->JDO->query($sql);
+        return $this->cachFatch('his_patient', $this->JDO->query($sql));
+    }
+    
+    private function cachFatch($table , array $data){
+        $this->load->database();
+        $this->db->replace($table, $data[0]);
+        return $data;
     }
 
 }
