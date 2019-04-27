@@ -19,7 +19,7 @@ class TestCachData extends CI_Controller {
 
     public function index() {
         $this->load->database();
-        $query = $this->db->query("SELECT * FROM theptarin_api.patient");
+        $query = $this->db->query("SELECT * FROM his_visit");
         echo "TestCachData";
         print_r($query->result_array());
     }

@@ -19,6 +19,11 @@ class HIMs_REG extends CI_Model {
         parent::__construct();
     }
 
+    /**
+     * ข้อมูลผู้ป่วย
+     * @param array $keys
+     * @return array
+     */
     public function fatchPatient(array $keys) {
         $sql = 'SELECT "REGMASV5PF"."RMSHNREF" "hn", "PREFIX"."NAME" "prefix", TRIM ( "REGMASV5PF"."RMSNAME" ) "fname", TRIM ( "REGMASV5PF"."RMSSURNAM" ) "lname", "REGMASV5PF"."RMSSEX" "sex", ( "RMSBTHYY" - 543 ) * 10000 + ( "RMSBTHMM" * 100 ) + "RMSBTHDD" "birthday_date", "REGMASV5PF"."RMSIDNO" "idcard" FROM "TRHPFV5"."REGMASV5PF" "REGMASV5PF", "TRHPFV5"."PREFIX2" "PREFIX" WHERE "REGMASV5PF"."RMSPRENAM" = "PREFIX"."ID"';
         if (!is_null($keys['hn'])) {
@@ -32,12 +37,20 @@ class HIMs_REG extends CI_Model {
         }
         $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         //echo $sql;
-        return $this->cachFatch('his_patient', $this->JDO->query($sql));
+        return $this->cacheFatch('his_patient', $this->JDO->query($sql));
     }
-    
-    private function cachFatch($table , array $data){
+
+    /**
+     * เก็บข้อมูล API ที่ใช้งานบ่อย
+     * @param type $table
+     * @param array $data
+     * @return array
+     */
+    private function cacheFatch($table, array $data) {
         $this->load->database();
-        $this->db->replace($table, $data[0]);
+        foreach ($data as $value) {
+            $this->db->replace($table, $value);
+        }
         return $data;
     }
 
