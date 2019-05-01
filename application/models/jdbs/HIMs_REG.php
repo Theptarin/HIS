@@ -17,6 +17,7 @@ class HIMs_REG extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
     }
 
     /**
@@ -35,8 +36,7 @@ class HIMs_REG extends CI_Model {
         } else {
             $sql = "SELECT rmshnref AS hn, rmsname AS fname, rmssurnam AS lname FROM regmasv5pf WHERE rmshnref = 0";
         }
-        $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
-        //echo $sql;
+
         return $this->cacheFatch('his_patient', $this->JDO->query($sql));
     }
 
