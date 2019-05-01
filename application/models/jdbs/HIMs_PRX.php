@@ -1,4 +1,5 @@
 <?php
+
 if (defined('BASEPATH')) {
     require_once(APPPATH . 'libraries/orr/Jdo.php');
 } else {
@@ -24,11 +25,36 @@ class HIMs_PRX extends CI_Model {
         } else {
             $sql .= '"REGALGV5PF"."RAGHN" = 0';
         }
-        /**
-         * การเชื่อมต่อฐานข้อมูล
-         */
+
         $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         return $this->JDO->query($sql);
     }
 
+    /**
+     * ข้อมูลยา
+     * @param array $keys ['is_sync' => TRUE]
+     * @return array
+     */
+    public function fatchDrug(array $keys) {
+        $sql = 'SELECT "PRDPRDNO" "id", "PRDPRDNAM" "trade_name", "PRDGNCNAM" "general_name" FROM "TRHPFV5"."PRDMASV5PF" "PRDMASV5PF" WHERE "PRDPRDTYP" = \'M\' ';
+        if (!$keys['is_sync']) {
+            $sql .= 'AND  "PRDPRDNO" = \'\'';
+        }
+        $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
+        return $this->cacheFatch('his_drug', $this->JDO->query($sql));
+    }
+
+    /**
+     * เก็บข้อมูล API ที่ใช้งานบ่อย
+     * @param type $table
+     * @param array $data
+     * @return array
+     */
+    private function cacheFatch($table, array $data) {
+        $this->load->database();
+        foreach ($data as $value) {
+            $this->db->replace($table, $value);
+        }
+        return $data;
+    }
 }

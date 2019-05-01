@@ -79,6 +79,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div id="container">
             <h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
+            <h2>ทะเบียนยา (DrugRpcS)</h2>
+            <div id="body">
+                มี รหัส ชื่อการค้า ชื่อสามัญ
+            </div>
+            
+            <div id="body">
+                <p>ข้อมูลยา : <a href="test_drug.php">ทั้งหมด</a></p>
+                <code>test_drug.php</code>
+            </div>
             
             <h2>ทะเบียนผู้ป่วยที่แพ้ยา (DrugAllergyRpcS)</h2>
             <div id="body">
