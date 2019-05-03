@@ -41,17 +41,63 @@ class Jdo {
         $this->execQuery($sql);
         return ($this->isExecOk()) ? $this->Json['data'] : FALSE;
     }
-    
+
     /**
      * JDO::update
      * @param string $sql
      * @return array 
      */
-    public function update($sql) {
+    public function exec($sql) {
         $this->execUpdate($sql);
         return ($this->isExecOk()) ? $this->Json['data'] : FALSE;
     }
 
+    /**
+     * เพิ่มข้อมูล
+     * @param type $table
+     * @param array $data
+     * @return mix
+     */
+    public function insert($table, array $data) {
+        $key = array_keys($data);
+        $val = array_values($data);
+        $sql = "INSERT INTO $table (" . implode(', ', $key) . ") "
+                . "VALUES ('" . implode("', '", $val) . "')";
+        return $this->exec($sql);
+    }
+    
+    /**
+     * แก้ไขข้อมูลตามฟิลด์และเงื่อนไขที่กำหนด
+     * @param type $table
+     * @param array $data
+     * @param array $keys
+     * @return type
+     */
+    public function update($table, array $data, array $keys) {
+        $cols = array();
+        foreach ($data as $key => $val) {
+            $cols[] = "$key = '$val'";
+        }
+        foreach ($keys as $key => $val) {
+            $where[] = "$key = '$val'";
+        }
+        $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE " . implode(' AND ', $where);
+        return $this->exec($sql);
+    }
+
+    /**
+     * ลบข้อมูลเงื่อนไขที่กำหนด
+     * @param type $table
+     * @param array $keys
+     * @return mix
+     */
+    public function delete($table, array $keys) {
+        foreach ($keys as $key => $val) {
+            $where[] = "$key = '$val'";
+        }
+        $sql = "DELETE FROM $table WHERE " . implode(' AND ', $where);
+        return $this->exec($sql);
+    }
 
     public function isExecOk() {
         return ($this->Json['execute'] === 'successed') ? TRUE : FALSE;
@@ -65,7 +111,6 @@ class Jdo {
         $output = NULL;
         try {
             $file_path = 'java -cp ' . $this->LibrariesPath . '*:' . $this->ModelsPath . 'jdb.jar execQuery ' . '"' . $sql . '" ' . '"' . $this->dbUser . '" ' . '"' . $this->dbPasswd . '" ' . '"' . $this->dbUrl . '" ';
-            //die($file_path);
             exec($file_path, $output);
             $this->Json = json_decode($output[0], TRUE);
             if ($this->Json['execute'] === 'failed') {
@@ -77,7 +122,7 @@ class Jdo {
             
         }
     }
-    
+
     private function execUpdate($sql) {
         $output = NULL;
         try {
@@ -93,6 +138,5 @@ class Jdo {
             
         }
     }
-
 
 }

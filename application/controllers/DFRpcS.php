@@ -32,11 +32,15 @@ class ServerMethods {
 
     /**
      * ค่าแพทย์ผู้ป่วยนอก
-     * @param array $idx_ ['document_id' => "DF00000001", 'document_thdate' => "25620501", 'document_time' => "1309", 'hn' => "460028", 'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT", 'doctor_id' => "1104", 'df_price' => "800", 'df_quantity' => "1", 'div_id' => "O10", 'contract_type' => "1", 'contract_code' => "", 'program_id' => "DFRequest"];
+     * @param json $idx_ ['document_id' => "DF00000001", 'document_thdate' => "25620501", 'document_time' => "1309", 'hn' => "460028", 'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT", 'doctor_id' => "1104", 'df_price' => "800", 'df_quantity' => "1", 'div_id' => "O10", 'contract_type' => "1", 'contract_code' => "", 'program_id' => "DFRequest"];
      * @return array
      */
-    public function setDfOpd($idx_) {
-        return 1;
+    public function setDfOpd($idx_json) {
+        $idx_ = json_decode(json_encode($idx_json), true); 
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_IPS');
+        $HIMs = new HIMs_IPS();
+        return $HIMs->insDfOpd($idx_);
     }
 
 }
