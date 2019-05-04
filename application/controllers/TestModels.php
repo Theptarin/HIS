@@ -17,8 +17,8 @@ class TestModels extends CI_Controller {
     }
 
     public function insDfOpd() {
-        $idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620503", 'document_time' => "0119", 'hn' => "460028",
-            'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT", 'ips_id' => "21", 'doctor_id' => "1104", 'df_price' => "123456",
+        $idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620504", 'document_time' => "0019", 'hn' => "460028",
+            'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT", 'ips_id' => "01", 'doctor_id' => "1104", 'df_price' => "999999999",
             'df_quantity' => "1", 'div_id' => "O10", 'contract_type' => "1", 'contract_code' => "", 'program_id' => "DFRequest"];
         $idx_['hims_thdate'] = substr($idx_['document_thdate'], 2);
         $ci = & get_instance();
