@@ -49,7 +49,7 @@ $success = $Client->call('setDfOpd', [$idx_]);
     <body>
         <div class="container">
             <div class="page-header">
-                <h1>ค่าแพทย์ผู้ป่วยนอก HIMs(JsonRPC)</h1>
+                <h1>บันทึกค่าแพทย์ผู้ป่วยนอก HIMs(JsonRPC)</h1>
             </div>
             <?php
             echo '<b>Json RPC:</b> ', $url;

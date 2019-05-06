@@ -79,26 +79,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div id="container">
             <h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
+            <h2>บันทึกค่าแพทย์ผู้ป่วยนอก(DFRpcS)</h2>
+            <div id="body">
+                /**
+                * ค่าที่ต้องส่งเพื่อบันทึกค่าแพทย์ผู้ป่วยนอกเป็นอะเรย์
+                * - document_id(string 10) : หมายเลขเอกสาร DF + [RUNING NUMBER] เป็นคีย์หลักเพื่อตรวจสอบแก้ไขข้อมูล
+                * - document_thdate(int 8) : พ.ศ.เดือนวัน ที่สร้างเอกสาร
+                * - document_time(int 4) : ชม.นาที
+                * - hn (bigint) : หมายเลขประจำตัวผู้ป่วย
+                * - vn (int) : ลำดับที่รับบริการผู้ป่วยนอก
+                * - vn_seq (int 2) : ลำดับการเข้ารับบริการตามจุดของผู้ป่วย
+                * - requester_id (string 6) : รหัสผู้บันทึกข้อมูล
+                * - ips_id (string 2) : รหัสประเภทค่าแพทย์
+                * - doctor_id (string 5) : รหัสแพทย์
+                * - df_price (currency 6) : ค่าธรรมเนียมแพทย์
+                * - df_quantity (int) : ค่าเริ่มต้น 1 (ไม่ส่งก็ได้)
+                * - div_id (string 3) : รหัสหน่วยงาน
+                * - contract_type (string) : ประเภทคู่สัญญามาจาก VN. (ไม่ส่งก็ได้)
+                * - contract_code (string) : รหัสคู่สัญญามาจาก VN. (ไม่ส่งก็ได้)
+                * - program_id () : รหัสโปรแกรมค่าเริ่มต้นเป็น DFRpcS (ไม่ส่งก็ได้)
+                */
+            </div>
+
+            <div id="body">
+                <p>บันทึกค่าแพทย์ : <a href="test_ins_df_opd.php">DF00000001</a></p>
+                <code>test_ins_df_opd.php</code>
+            </div>
+
+            <h2>ลบค่าแพทย์ผู้ป่วยนอก(DFRpcS)</h2>
+            <div id="body">
+                /**
+                * ค่าที่ต้องส่งเพื่อลบค่าแพทย์ผู้ป่วยนอกเป็นอะเรย์
+                * - document_id(string 10) : หมายเลขเอกสาร DF + [RUNING NUMBER] เป็นคีย์หลักเพื่อตรวจสอบลบข้อมูล
+                * - document_thdate(int 8) : พ.ศ.เดือนวัน ที่สร้างเอกสาร คีย์เพื่อตรวจสอบที่อีกชั้น
+                */
+            </div>
+
+            <div id="body">
+                <p>ลบค่าแพทย์ : <a href="test_rmv_df_opd.php">DF00000001</a></p>
+                <code>test_rmv_df_opd.php</code>
+            </div>
+
             <h2>ทะเบียนยา (DrugRpcS)</h2>
             <div id="body">
                 มี รหัส ชื่อการค้า ชื่อสามัญ
             </div>
-            
+
             <div id="body">
                 <p>ข้อมูลยา : <a href="test_drug.php">ทั้งหมด</a></p>
                 <code>test_drug.php</code>
             </div>
-            
+
             <h2>ทะเบียนผู้ป่วยที่แพ้ยา (DrugAllergyRpcS)</h2>
             <div id="body">
                 มี HN. ยา กลุ่ม ชื่อสามัญ อาการที่แพ์ วันที่บันทึก
             </div>
-            
+
             <div id="body">
                 <p>ข้อมูลแพ้ยาตาม : <a href="test_drug_allergy.php">HN. 168348 </a></p>
                 <code>test_drug_allergy.php</code>
             </div>
-            
+
             <h2>ทะเบียนผู้รับบริการ (PatientRpcS)</h2>
             <div id="body">
                 เช่น ชื่อ นามสกุล เพศ วันเดือนปีเกิด ผู้รับบริการ เป็นต้น
@@ -122,10 +163,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="body">
                 <p>ข้อมูลการรับบริการผู้ป่วยนอกตาม : <a href="test_opd_visit.php">HN. 460028 DIV DP1 </a></p>
                 <code>test_opd_visit.php</code>
-                
+
                 <p>รายการการรับบริการผู้ป่วยนอก ภายใน : <a href="index.php/OpdVisit">วันนี้</a></p>
                 <code>index.php/OpdVisit</code>
-                
+
                 <p>รายการการรับบริการผู้ป่วยนอก : <a href="index.php/OpdVisit/hn/365656">HN. 365656 </a></p>
                 <code>index.php/OpdVisit/hn/365656</code>
             </div>

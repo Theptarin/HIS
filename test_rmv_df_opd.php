@@ -27,13 +27,13 @@ $success = $Client->call('rmvDfOpd', [$idx_]);
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>บันทึกค่าแพทย์ผู้ป่วยนอก(JsonRPC)</title>
+        <title>ลบค่าแพทย์ผู้ป่วยนอก(JsonRPC)</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
             <div class="page-header">
-                <h1>ค่าแพทย์ผู้ป่วยนอก HIMs(JsonRPC)</h1>
+                <h1>ลบค่าแพทย์ผู้ป่วยนอก HIMs(JsonRPC)</h1>
             </div>
             <?php
             echo '<b>Json RPC:</b> ', $url;
