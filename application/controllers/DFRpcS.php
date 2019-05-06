@@ -49,7 +49,6 @@ class ServerMethods {
      * - contract_code (string) : รหัสคู่สัญญามาจาก VN. (ไม่ส่งก็ได้)
      * - program_id () : รหัสโปรแกรมค่าเริ่มต้นเป็น DFRpcS (ไม่ส่งก็ได้)
      * @param json $idx_json ['document_id' => "DF00000001", 'document_thdate' => "25620501", 'document_time' => "1309", 'hn' => "460028", 'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT", 'doctor_id' => "1104", 'df_price' => "800", 'df_quantity' => "1", 'div_id' => "O10", 'contract_type' => "1", 'contract_code' => "", 'program_id' => "DFRequest"];
-     * @return array
      */
     public function setDfOpd($idx_json) {
         try {
@@ -57,7 +56,24 @@ class ServerMethods {
             $ci = & get_instance();
             $ci->load->model('jdbs/HIMs_IPS');
             $HIMs = new HIMs_IPS();
-            $HIMs->insDfOpd($idx_);
+            return $HIMs->insDfOpd($idx_);
+        } catch (Exception $exc) {
+            $this->error = $exc->getTraceAsString();
+        }
+    }
+
+    /**
+     * ลบค่าแพทย์
+     * @param type $idx_json $idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620504"];
+     * @return boolean
+     */
+    public function rmvDfOpd($idx_json) {
+        try {
+            $idx_ = json_decode(json_encode($idx_json), true);
+            $ci = & get_instance();
+            $ci->load->model('jdbs/HIMs_IPS');
+            $HIMs = new HIMs_IPS();
+            return $HIMs->delDfOpd($idx_);
         } catch (Exception $exc) {
             $this->error = $exc->getTraceAsString();
         }
