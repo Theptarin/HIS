@@ -79,6 +79,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div id="container">
             <h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
+            
+            <h2>ข้อมูลการส่งตรวจแลป(LabRequestRpcS)</h2>
+            <div id="body">
+                UPDATE his_lab_request | 
+                $success = $Client->call('getByHn', ['365656']) : เรียกใช้ข้อมูล HN. 365656 | 
+                $success = $Client->call('getToday', []) : เรียกใช้ข้อมูลประจำวัน
+            </div>
+
+            <div id="body">
+                <p>ข้อมูลส่งตรวจแลป : <a href="test_lab_request.php">วันนี้</a></p>
+                <code>test_lab_request.php</code>
+            </div>
+            
             <h2>บันทึกค่าแพทย์ผู้ป่วยนอก(DFRpcS)</h2>
             <div id="body">
                 /**

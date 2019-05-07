@@ -41,12 +41,19 @@ class TestModels extends CI_Controller {
         $HIMs = new HIMs_PRX();
         print_r($HIMs->fatchDrugAllergy(['hn' => $hn]));
     }
-    
+
     public function fatchDfDocument($document_id = "DF00000001") {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_IPS');
         $HIMs = new HIMs_IPS();
         print_r($HIMs->fatchDocument(['document_id' => $document_id]));
+    }
+
+    public function fatchLabRequest($hn = "365656") {
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_LAB');
+        $HIMs = new HIMs_LAB();
+        print_r($HIMs->fatchRequest(['hn' => $hn]));
     }
 
 }
