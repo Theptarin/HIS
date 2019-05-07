@@ -79,7 +79,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div id="container">
             <h1>เว็บเซอร์วิสโรงพยาบาลเทพธารินทร์ ระบบสารสนเทศบริหารงานโรงพยาบาล</h1>
+
+            <h2>ICD10 Principal IMC(Icd10OpdRpcS)</h2>
+            <div id="body">
+                คืน Array ICD10 | 
+                $success = $Client->call('getPrincipalCode', ['E10.1']); : ค้นข้อมูลจากรหัส ICD10 E10.1 | 
+                $success = $Client->call('getPrincipalSearch', ['%dial']); : ค้นข้อมูลที่มีคำว่า dial ทั้งในรหัส และชื่อ
+            </div>
+
+            <div id="body">
+                <p>ICD10 Principal : <a href="test_icd10_principal.php">ค้นข้อมูลที่มีคำว่า dial</a></p>
+                <code>test_icd10_principal.php</code>
+            </div>
+
             
+            <h2>ประวัติยาที่เคยจ่ายให้ผู้ป่วย(DrugDispenseRpcS)</h2>
+            <div id="body">
+                ข้อมูลการจ่ายให้ผู้ป่วย
+                [discription_2] => วันละ 2 ครั้ง หลังอาหารเช้า เย็น
+                [discription_1] => รับประทานครั้งละ 1 เม็ด
+                [drug_id] => DTRHI00
+                [visit_status] => O
+                [quantity] => 15
+                [hn] => 365656
+                [discription_3] => ทานยาแล้วอาจง่วงนอน ยาแก้แพ้
+                [document_date] => 20160412
+                [vn] => 29602
+                [drug_trade_name] => RHINOPHEN-C TAB
+                [document_id] => 5904120321
+                [an] => 0
+            </div>
+
+            <div id="body">
+                <p>ข้อมูลการจ่ายยาให้ : <a href="test_drug_dispense.php">HN.365656</a></p>
+                <code>test_drug_dispense.php</code>
+            </div>
+
             <h2>ข้อมูลการส่งตรวจแลป(LabRequestRpcS)</h2>
             <div id="body">
                 UPDATE his_lab_request | 
@@ -91,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p>ข้อมูลส่งตรวจแลป : <a href="test_lab_request.php">วันนี้</a></p>
                 <code>test_lab_request.php</code>
             </div>
-            
+
             <h2>บันทึกค่าแพทย์ผู้ป่วยนอก(DFRpcS)</h2>
             <div id="body">
                 /**

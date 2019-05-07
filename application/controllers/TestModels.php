@@ -56,4 +56,26 @@ class TestModels extends CI_Controller {
         print_r($HIMs->fatchRequest(['hn' => $hn]));
     }
 
+    /**
+     * ยาที่เคยจ่ายให้ผู้ป่วย
+     * @param type $hn
+     */
+    public function fatchDispense($hn = "365656") {
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_PRX');
+        $HIMs = new HIMs_PRX();
+        print_r($HIMs->fatchDispense(['hn' => $hn]));
+    }
+
+    /**
+     * $code = "E11.1"
+     * $search = "%dia"
+     * @param type $search
+     */
+    public function facthICD10Principal($search = "%dial", $code = "E11.1") {
+        $this->load->model('IMC_ICD10');
+        $IMC_ICD10 = new IMC_ICD10();
+        print_r($IMC_ICD10->facthICD10Principal(['search' => $search, 'code' => $code]));
+    }
+
 }
