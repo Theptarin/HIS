@@ -20,16 +20,6 @@ class ServerMethods {
 
     public $error = NULL;
 
-    public function divide($dividend, $divisor, $int = false) {
-
-        if (!$divisor) {
-            $this->error = 'Cannot divide by zero';
-        } else {
-            $quotient = $dividend / $divisor;
-            return $int ? (int) $quotient : $quotient;
-        }
-    }
-
     /**
      * บันทึกค่าแพทย์ผู้ป่วยนอก
      * ค่าที่ต้องส่งเพื่อบันทึกค่าแพทย์ผู้ป่วยนอกเป็นอะเรย์
@@ -58,7 +48,7 @@ class ServerMethods {
             $HIMs = new HIMs_IPS();
             return $HIMs->insDfOpd($idx_);
         } catch (Exception $exc) {
-            $this->error = $exc->getTraceAsString();
+            $this->error = $exc->getMessage();
         }
     }
 
@@ -75,8 +65,15 @@ class ServerMethods {
             $HIMs = new HIMs_IPS();
             return $HIMs->delDfOpd($idx_);
         } catch (Exception $exc) {
-            $this->error = $exc->getTraceAsString();
+            $this->error = $exc->getMessage();
         }
+    }
+
+    public function getDfDoc() {
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_IPS');
+        $HIMs_ = new HIMs_IPS();
+        return $HIMs_->fatchDfDoc([]);
     }
 
 }

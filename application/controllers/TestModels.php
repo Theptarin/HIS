@@ -46,7 +46,7 @@ class TestModels extends CI_Controller {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_IPS');
         $HIMs = new HIMs_IPS();
-        print_r($HIMs->fatchDocument(['document_id' => $document_id]));
+        print_r($HIMs->fatchDfDoc(['document_id' => $document_id]));
     }
 
     public function fatchLabRequest($hn = "365656") {

@@ -19,8 +19,6 @@ $success = false;
 /**
  * ค่าที่ต้องส่งเพื่อบันทึกค่าแพทย์ผู้ป่วยนอกเป็นอะเรย์
  * - document_id(string 10) : หมายเลขเอกสาร DF + [RUNING NUMBER] เป็นคีย์หลักเพื่อตรวจสอบแก้ไขข้อมูล
- * - document_thdate(int 8) : พ.ศ.เดือนวัน ที่สร้างเอกสาร
- * - document_time(int 4) : ชม.นาที
  * - hn (bigint) : หมายเลขประจำตัวผู้ป่วย
  * - vn (int) : ลำดับที่รับบริการผู้ป่วยนอก
  * - vn_seq (int 2) : ลำดับการเข้ารับบริการตามจุดของผู้ป่วย
@@ -34,9 +32,11 @@ $success = false;
  * - contract_code (string) : รหัสคู่สัญญามาจาก VN. (ไม่ส่งก็ได้)
  * - program_id () : รหัสโปรแกรมค่าเริ่มต้นเป็น DFRpcS (ไม่ส่งก็ได้)
  */
- $idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620504", 'document_time' => "0019", 'hn' => "460028",
-            'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT", 'ips_id' => "01", 'doctor_id' => "1104", 'df_price' => "999999.99",
-            'df_quantity' => "1", 'div_id' => "O10", 'contract_type' => "1", 'contract_code' => "", 'program_id' => "DFRequest"];
+//$cur_thdate = date("Ymd") + 5430000;
+//$cur_time = date("Hi");
+$idx_ = ['document_id' => "DF00000001", 'hn' => "460028", 'vn' => "0001", 'vn_seq' => "02", 'requester_id' => "ITIT",
+    'ips_id' => "01", 'doctor_id' => "1104", 'df_price' => "999999.99", 'df_quantity' => "1", 'div_id' => "O10",
+    'contract_type' => "1", 'contract_code' => "", 'program_id' => "DFRequest"];
 //$idx_['hims_thdate'] = substr($idx_['document_thdate'], 2);
 $success = $Client->call('setDfOpd', [$idx_]);
 ?>

@@ -17,10 +17,30 @@ class HIMs_IPS extends CI_Model {
         parent::__construct();
     }
 
+    /**
+     * เพิ่มเอกสารค่าธรรมเนียมแพทย์
+     * - document_id(string 10) : หมายเลขเอกสาร DF + [RUNING NUMBER] เป็นคีย์หลักเพื่อตรวจสอบแก้ไขข้อมูล
+     * - hn (bigint) : หมายเลขประจำตัวผู้ป่วย
+     * - vn (int) : ลำดับที่รับบริการผู้ป่วยนอก
+     * - vn_seq (int 2) : ลำดับการเข้ารับบริการตามจุดของผู้ป่วย
+     * - requester_id (string 6) : รหัสผู้บันทึกข้อมูล
+     * - ips_id (string 2) : รหัสประเภทค่าแพทย์
+     * - doctor_id (string 5) : รหัสแพทย์
+     * - df_price (currency 6) : ค่าธรรมเนียมแพทย์
+     * - df_quantity (int) : ค่าเริ่มต้น 1 (ไม่ส่งก็ได้)
+     * - div_id (string 3) : รหัสหน่วยงาน
+     * - contract_type (string) : ประเภทคู่สัญญามาจาก VN. (ไม่ส่งก็ได้)
+     * - contract_code (string) : รหัสคู่สัญญามาจาก VN. (ไม่ส่งก็ได้)
+     * - program_id () : รหัสโปรแกรมค่าเริ่มต้นเป็น DFRpcS (ไม่ส่งก็ได้)
+     * @param array $idx_
+     * @return boolean
+     * @throws Exception
+     */
     public function insDfOpd(array $idx_) {
-        $document_ = $this->fatchDocument($idx_);
-        if (empty($document_)) {
+        if (empty($this->fatchDfDoc($idx_))) {
             $jdo = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
+            $idx_['document_thdate'] = date("Ymd") + 5430000;
+            $idx_['document_time'] = date("Hi");
             $idx_['hims_thdate'] = substr($idx_['document_thdate'], 2);
             $data_ipsrqov5pf = ['IRQDOCDTE' => $idx_['document_thdate'], 'IRQDOCNO' => $idx_['document_id'], 'IRQDOCTIM' => $idx_['document_time'], 'IRQIOPD' => "O", 'IRQHN' => $idx_['hn'], 'IRQVN' => $idx_['vn'], 'IRQVNSEQ' => $idx_['vn_seq'], 'IRQRQODIV' => $idx_['div_id'], 'IRQRQODR' => $idx_['doctor_id'], 'IRQRQOUSR' => $idx_['requester_id'], 'IRQDRCOD' => $idx_['doctor_id'], 'IRQDRFAMT' => $idx_['df_price'] * $idx_['df_quantity'], 'IRQSTSFLG' => "2", 'IRQHLDFLG' => "", 'IRQCONTYP' => $idx_['contract_type'], 'IRQCONCOD' => $idx_['contract_code'], 'IRQSECNAM' => $idx_['requester_id'], 'IRQSECDTE' => "620416"];
             $jdo->insert("IPSRQOV5PF", $data_ipsrqov5pf);
@@ -34,26 +54,29 @@ class HIMs_IPS extends CI_Model {
             $jdo->insert("OBLDETTMPF", $data_obldetv5pf_dfd);
             return TRUE;
         } else {
-            $message = "Document ID : " . $idx_['document_id'] . " exist.";
-            throw new Exception($message);
+            throw new Exception('เอกสารที่ต้องการเพิ่มมีอยู่แล้ว | ' . print_r($idx_, TRUE));
         }
-
-        //return [$idx_];
     }
 
-    public function fatchDocument(array $key_) {
+    public function fatchDfDoc(array $key_) {
         $sql = "SELECT * FROM IPSRQOV5PF";
         if (!is_null($key_['document_id'])) {
             $sql .= " WHERE IRQDOCNO = '" . $key_['document_id'] . "'";
         } else {
-            $sql .= " WHERE IRQDOCNO = ''";
+            $sql .= " WHERE IRQDOCNO LIKE 'D%'";
         }
         $jdo = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         return $jdo->query($sql);
     }
 
+    /**
+     * ลบเอกสารตามหมายเลขเอกสาร
+     * @param array $idx_
+     * @return boolean
+     * @throws Exception
+     */
     public function delDfOpd(array $idx_) {
-        if (!is_null($idx_['document_id'] and !is_null($idx_['document_thdate']))) {
+        if ($this->chkDfDoc($idx_) AND $idx_['document_thdate'] - 5430000 == date("Ymd")) {
             $jdo = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
             $key_ipsrqov5pf = ['IRQDOCNO' => $idx_['document_id'], 'IRQDOCDTE' => $idx_['document_thdate']];
             $jdo->delete("IPSRQOV5PF", $key_ipsrqov5pf);
@@ -64,9 +87,21 @@ class HIMs_IPS extends CI_Model {
             $jdo->delete("OBLDETTMPF", $key_obldetv5pf);
             return TRUE;
         } else {
-            $message = "Document ID : " . $idx_['document_id'] . " can not delete.";
-            throw new Exception($message);
+            throw new Exception('ข้อมูลเอกสารที่ต้องการลบไม่ถูกต้อง | ' . print_r($idx_, TRUE));
         }
+    }
+
+    /**
+     * ตรวจสอบเอกสารว่ามีอยู่จริง
+     * @param array $key_
+     * @return boolean
+     * @throws Exception
+     */
+    public function chkDfDoc(array $key_) {
+        if (empty($this->fatchDfDoc($key_))) {
+            throw new Exception('ไม่พบเอกสารที่ต้องการ | ' . print_r($key_, TRUE));
+        }
+        return TRUE;
     }
 
 }

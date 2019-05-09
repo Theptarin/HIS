@@ -17,23 +17,20 @@ $Client = new JsonRpc\Client($url);
 # set up our rpc call with a method and params
 $success = false;
 /**
- * ค่าที่ต้องส่งเพื่อลบค่าแพทย์ผู้ป่วยนอกเป็นอะเรย์
- * - document_id(string 10) : หมายเลขเอกสาร DF + [RUNING NUMBER] เป็นคีย์หลักเพื่อตรวจสอบลบข้อมูล
- * - document_thdate(int 8) : พ.ศ.เดือนวัน ที่สร้างเอกสาร คีย์เพื่อตรวจสอบที่อีกชั้น
+ * รายการเอกสารค่าธรรมเนียมแพทย์
  */
-$idx_ = ['document_id' => "DF00000001", 'document_thdate' => date("Ymd") + 5430000];
-$success = $Client->call('rmvDfOpd', [$idx_]);
+$success = $Client->call('getDfDoc', []);
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ลบค่าแพทย์ผู้ป่วยนอก(JsonRPC)</title>
+        <title>เอกสารค่าธรรมเนียมแพทย์ TCS(JsonRPC)</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
             <div class="page-header">
-                <h1>ลบค่าแพทย์ผู้ป่วยนอก HIMs(JsonRPC)</h1>
+                <h1>เอกสารค่าธรรมเนียมแพทย์ TCS (JsonRPC)</h1>
             </div>
             <?php
             echo '<b>Json RPC:</b> ', $url;

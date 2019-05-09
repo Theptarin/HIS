@@ -127,6 +127,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <code>test_lab_request.php</code>
             </div>
 
+            <h2>เอกสารค่าธรรมเนียมแพทย์ TCS (DFRpcS)</h2>
+            <div id="body">
+                เอกสารค่าธรรมเนียมแพทย์ที่นำหน้าด้วยตัว D ใน HIMs
+            </div>
+
+            <div id="body">
+                <p>หมายเลขเอกสาร : <a href="test_df_doc.php">นำหน้าด้วยตัวอักษร D%</a></p>
+                <code>test_df_doc.php</code>
+            </div>
+            
             <h2>บันทึกค่าแพทย์ผู้ป่วยนอก(DFRpcS)</h2>
             <div id="body">
                 /**
