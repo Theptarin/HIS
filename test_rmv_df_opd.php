@@ -22,6 +22,7 @@ $success = false;
  * - document_thdate(int 8) : พ.ศ.เดือนวัน ที่สร้างเอกสาร คีย์เพื่อตรวจสอบที่อีกชั้น
  */
 $idx_ = ['document_id' => "DF00000001", 'document_thdate' => date("Ymd") + 5430000];
+//$idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620509"];
 $success = $Client->call('rmvDfOpd', [$idx_]);
 ?>
 <html>
