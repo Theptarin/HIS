@@ -36,15 +36,15 @@ class HIMs_PRX extends CI_Model {
      * @return array
      */
     public function fatchDrug(array $keys) {
-        $sql = 'SELECT "PRDPRDNO" "id", "PRDPRDNAM" "trade_name", "PRDGNCNAM" "general_name" FROM "TRHPFV5"."PRDMASV5PF" "PRDMASV5PF" WHERE "PRDPRDTYP" = \'M\' ';
-        if (!$keys['is_sync']) {
-            $sql .= 'AND  "PRDPRDNO" = \'\'';
+        $sql = 'SELECT "PRDPRDNO" "id", "PRDPRDNAM" "trade_name", "PRDGNCNAM" "general_name", "PRDDOSFOM" "dosage_form" FROM "TRHPFV5"."PRDMASV5PF" "PRDMASV5PF" WHERE "PRDPRDTYP" = \'M\'';
+        if (!isset($keys['is_sync'])) {
+            $sql .= ' AND  "PRDPRDNO" = \'\'';
         }
         $this->JDO = new \Orr\Jdo('orrconn', 'xoylfk', 'jdbc:as400://10.1.99.2/trhpfv5');
         return $this->cacheFatch('his_drug', $this->JDO->query($sql));
     }
-    
-     /**
+
+    /**
      * ประวัติยาผู้ป่วยเคยได้รับ
      * @param array $keys ['hn' => $hn];
      * @return array

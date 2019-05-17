@@ -31,7 +31,19 @@ class ServerMethods {
         $HIMs_ = new HIMs_LAB();
         return $HIMs_->fatchRequest(['hn' => $hn]);
     }
-    
+
+    /**
+     * ข้อมูลสั่งตรวจตั้งแต่วันที่สั่ง
+     * @param integer $thdate พศ.เดือนวัน
+     * @return array
+     */
+    public function getByThdate($thdate) {
+        $ci = & get_instance();
+        $ci->load->model('jdbs/HIMs_LAB');
+        $HIMs_ = new HIMs_LAB();
+        return $HIMs_->fatchRequest(['thdate' => $thdate]);
+    }
+
     /**
      * ข้อมูลสั่งตรวจวันนี้
      * @return array

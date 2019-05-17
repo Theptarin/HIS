@@ -31,6 +31,11 @@ $success = false;
  */
 $success = $Client->call('getToday', []);
 
+/**
+ * ทดสอบการดึงข้อมูลตั้งแต่วันที่
+ */
+//$success = $Client->call('getByThdate', [25620101]);
+
 ?>
 <html>
     <head>

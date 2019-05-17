@@ -49,11 +49,11 @@ class TestModels extends CI_Controller {
         print_r($HIMs->fatchDfDoc(['document_id' => $document_id]));
     }
 
-    public function fatchLabRequest($hn = "365656") {
+    public function fatchLabRequest($thdate = 25620501) {
         $ci = & get_instance();
         $ci->load->model('jdbs/HIMs_LAB');
         $HIMs = new HIMs_LAB();
-        print_r($HIMs->fatchRequest(['hn' => $hn]));
+        print_r($HIMs->fatchRequest(['thdate' => $thdate]));
     }
 
     /**
