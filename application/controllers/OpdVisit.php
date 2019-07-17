@@ -15,7 +15,7 @@ class OpdVisit extends CI_Controller{
 
     public function __construct() {
         parent::__construct();
-        $url = 'http://10.1.88.4/HIS/index.php/OpdVisitRpcS';
+        $url = 'http://10.1.88.8/HIS/index.php/OpdVisitRpcS';
         $this->load->library('vendor/json_rpc_client', ['url' => $url, 'transport' => NULL]);
     }
 

@@ -10,7 +10,7 @@ ini_set('default_charset', 'UTF-8');
 ini_set('display_errors', '1');
 require_once 'vendor/autoload.php';
 # set the url of the server
-$url = 'http://10.1.88.4/HIS/index.php/OpdVisitRpcS';
+$url = 'http://10.1.88.8/HIS/index.php/OpdVisitRpcS';
 //$url = 'http://e4d4bb07.ngrok.io/HIS/index.php/OpdVisitRpcS';
 # create our client object, passing it the server url
 $Client = new JsonRpc\Client($url);
@@ -24,7 +24,7 @@ $success = false;
 /**
  * ค้นหาข้อมูลด้วย HN. 460028 และ div_id DP1 เพื่อทดสอบการเชื่อมระบบ
  */
-$success = $Client->call('getByHnDiv', ['527553','O10']);
+$success = $Client->call('getByHnDiv', ['460028','DP1']);
 
 /**
  * ค้นหาข้อมูลด้วย HN. 365656 เพื่อทดสอบการเชื่อมระบบ

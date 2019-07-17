@@ -10,7 +10,7 @@ ini_set('default_charset', 'UTF-8');
 ini_set('display_errors', '1');
 require_once 'vendor/autoload.php';
 # set the url of the server
-$url = 'http://10.1.88.4/HIS/index.php/PatientRpcS';
+$url = 'http://10.1.88.8/HIS/index.php/PatientRpcS';
 //$url = 'http://e4d4bb07.ngrok.io/HIS/index.php/PatientRpcS';
 //$url = 'http://61.19.22.99/medicong-dev/API/HIS/index.php/PatientRpcS';
 # create our client object, passing it the server url

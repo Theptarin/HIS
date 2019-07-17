@@ -10,7 +10,7 @@ ini_set('default_charset', 'UTF-8');
 ini_set('display_errors', '1');
 require_once 'vendor/autoload.php';
 # set the url of the server
-$url = 'http://10.1.88.4/HIS/index.php/LabRequestRpcS';
+$url = 'http://10.1.88.8/HIS/index.php/LabRequestRpcS';
 //$url = 'http://e4d4bb07.ngrok.io/HIS/index.php/OpdVisitRpcS';
 # create our client object, passing it the server url
 $Client = new JsonRpc\Client($url);
@@ -34,7 +34,7 @@ $success = $Client->call('getToday', []);
 /**
  * ทดสอบการดึงข้อมูลตั้งแต่วันที่
  */
-//$success = $Client->call('getByThdate', [25620101]);
+//$success = $Client->call('getByThdate', [25620501]);
 
 ?>
 <html>

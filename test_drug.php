@@ -10,7 +10,7 @@ ini_set('default_charset', 'UTF-8');
 ini_set('display_errors', '1');
 require_once 'vendor/autoload.php';
 # set the url of the server
-$url = 'http://10.1.88.4/HIS/index.php/DrugRpcS';
+$url = 'http://10.1.88.8/HIS/index.php/DrugRpcS';
 //$url = 'http://61cd1fe0.ngrok.io/HIS/index.php/DrugRpcS';
 # create our client object, passing it the server url
 $Client = new JsonRpc\Client($url);
