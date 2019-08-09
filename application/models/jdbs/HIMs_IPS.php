@@ -86,6 +86,8 @@ class HIMs_IPS extends CI_Model {
 
     /**
      * ลบเอกสารตามหมายเลขเอกสาร
+     * if ($this->chkDfDoc($idx_) AND $idx_['document_thdate'] - 5430000 == date("Ymd")) {
+     * if ($this->chkDfDoc($idx_) AND !is_null($idx_['document_id'])) {
      * @param array $idx_
      * @return boolean
      * @throws Exception

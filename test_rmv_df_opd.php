@@ -21,8 +21,8 @@ $success = false;
  * - document_id(string 10) : หมายเลขเอกสาร DF + [RUNING NUMBER] เป็นคีย์หลักเพื่อตรวจสอบลบข้อมูล
  * - document_thdate(int 8) : พ.ศ.เดือนวัน ที่สร้างเอกสาร คีย์เพื่อตรวจสอบที่อีกชั้น
  */
-$idx_ = ['document_id' => "DF00000001", 'document_thdate' => date("Ymd") + 5430000];
-//$idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620509"];
+//$idx_ = ['document_id' => "DF00000001", 'document_thdate' => date("Ymd") + 5430000];
+$idx_ = ['document_id' => "DF00000001", 'document_thdate' => "25620626"];
 $success = $Client->call('rmvDfOpd', [$idx_]);
 ?>
 <html>
