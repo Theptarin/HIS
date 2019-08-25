@@ -32,14 +32,12 @@ class HIMs_LAB extends CI_Model {
             $sql .= ' AND "LABRQDV5PF"."LRDHN" = \'' . $keys['hn'] . '\'';
         } else if (isset($keys['thdate'])) {
             $sql .= ' AND "LABRQOV5PF"."LRQRQODTE" >= ' . $keys['thdate'];
-        } else {
-            $sql .= ' AND "LABRQOV5PF"."LRQRQODTE" = ' . $cur_thdate;
         }
         return $this->cacheFatch('his_lab_request', $this->JDO->query($sql));
     }
 
     /**
-     * เก็บข้อมูล API ที่ใช้งานบ่อย
+     * ปรับปรุงฐานข้อมูล
      * @param type $table
      * @param array $data
      * @return array

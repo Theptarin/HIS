@@ -29,12 +29,12 @@ $success = false;
 /**
  * ทดสอบการดึงข้อมูลประจำวัน
  */
-//$success = $Client->call('getToday', []);
+$success = $Client->call('getToday', []);
 
 /**
  * ทดสอบการดึงข้อมูลตั้งแต่วันที่
  */
-$success = $Client->call('getByThdate', [25620801]);
+//$success = $Client->call('getByThdate', [25620801]);
 
 ?>
 <html>

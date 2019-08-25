@@ -43,10 +43,11 @@ class ServerMethods {
     public function setDfOpd($idx_json) {
         try {
             $idx_ = json_decode(json_encode($idx_json), true);
-            $ci = & get_instance();
-            $ci->load->model('jdbs/HIMs_IPS');
-            $HIMs = new HIMs_IPS();
-            return $HIMs->insDfOpd($idx_);
+            //$ci = & get_instance();
+            //$ci->load->model('jdbs/HIMs_IPS');
+            //$HIMs = new HIMs_IPS();
+            //return $HIMs->insDfOpd($idx_);
+            return TRUE;//ทดสอบระบบไม่บันทึกค่าแพทย์ที่ HIMs
         } catch (Exception $exc) {
             $this->error = $exc->getMessage();
         }
